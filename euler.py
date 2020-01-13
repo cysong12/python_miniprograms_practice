@@ -55,10 +55,37 @@ def sum_of_even_integers_fibonacci_sequence(upper_bound):
     return even_fibonacci_sum
 
 
+def factor_into_primes(number: int):
+    """
+    Problem 3:
+    The prime factors of 13195 are 5, 7, 13 and 29.
+
+    What is the largest prime factor of the number 600851475143 ?
+
+    :param number:
+    :return:
+
+    Solved/Correct.
+    """
+    max_prime_factor = 1
+    if number % 2 == 0:
+        max_prime_factor = 2
+        number //= 2
+    # number is odd now.
+    # any product of factor x and y of a number > x
+    for multiple in range(3, int(number ** 0.5 + 1), 2):
+        if number % multiple == 0:
+            max_prime_factor = multiple
+            number //= multiple
+    return max_prime_factor
+
+
+
 def main():
     # problems are solved/invoked in order
     print(multiples_sum(3, 5, upper_bound=1000))
     print(sum_of_even_integers_fibonacci_sequence(4000000))
+    print(factor_into_primes(600851475143))
 
 
 if __name__ == "__main__":
